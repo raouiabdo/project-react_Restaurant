@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { fetchMenus } from '../service/api'; // Assurez-vous que ce chemin est correct
-
-import MenuList from '../components/Menu/MenuList';
+import React, { useEffect, useState } from "react";
+import { fetchMenus } from '../service/api';
+import MenuList from "../components/Menu/MenuList";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -14,7 +13,7 @@ const Menu = () => {
         const data = await fetchMenus();
         setMenus(data);
       } catch (err) {
-        setError('Failed to load menus');
+        setError("Failed to load menus");
       } finally {
         setLoading(false);
       }
@@ -35,3 +34,5 @@ const Menu = () => {
 };
 
 export default Menu;
+
+
