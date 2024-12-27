@@ -4,7 +4,12 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/orders');
+const adminRoutes = require('./routes/admin');
 
+// Utilisation des routes admin
+app.use('/api/admin', adminRoutes);
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 dotenv.config();
 const app = express();
 

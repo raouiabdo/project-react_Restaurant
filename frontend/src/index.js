@@ -4,10 +4,13 @@ import App from "./App";
 import "./index.css";
 
 
-// Rendu de l'application React dans le DOM
+import { AuthProvider } from "./context/AuthContext";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <AuthProvider>
     <App />
-  </React.StrictMode>
+  </AuthProvider>
 );
+
+
