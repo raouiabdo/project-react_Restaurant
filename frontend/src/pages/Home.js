@@ -2,17 +2,20 @@ import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 
 const Home = () => {
+  const backgroundImage =
+    "https://th.bing.com/th/id/R.403f8e5b1f4306efd17aee040a28d905?rik=UR%2b7GEEcNXpPdA&riu=http%3a%2f%2fwww.insplosion.com%2fblog%2fwp-content%2fuploads%2f2020%2f12%2fThe-Top-5-Most-Beautiful-Restaurants-in-Toronto-1.jpg&ehk=ccnea3EgjOq02rwlw0wrXpxTCmdkoq2WiJrBHiKQKw4%3d&risl=&pid=ImgRaw&r=0";
+
   return (
     <Box
       sx={{
         position: "relative",
         height: "100vh",
-        backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6MHAPIdriW6ZOasfYcmB3JWO8UkLqsveuQ&s')`, // Remplacez par l'URL de votre image
+        backgroundImage: `url(${backgroundImage})`, // Utilisation correcte de l'URL
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay pour assombrir l'image */}
+      {/* Overlay to darken the image */}
       <Box
         sx={{
           position: "absolute",
@@ -24,14 +27,14 @@ const Home = () => {
         }}
       />
 
-      {/* Contenu superposé */}
+      {/* Text Content */}
       <Box
         sx={{
           position: "relative",
           zIndex: 2,
           color: "#fff",
           textAlign: "center",
-          top: "50%",
+          top: "50%", // Position the text in the middle
           transform: "translateY(-50%)",
         }}
       >
@@ -50,5 +53,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
