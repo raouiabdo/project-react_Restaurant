@@ -1,23 +1,29 @@
+require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Import des routes
 const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
 const menuRoutes = require('./routes/menu');
 const orderRoutes = require('./routes/orders');
-const adminRoutes = require('./routes/admin');
 
-// Utilisation des routes admin
+app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
-const authRoutes = require('./routes/auth');
-app.use('/api/auth', authRoutes);
-dotenv.config();
-const app = express();
-
-app.use(express.json());
-app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
 
+// Connexion à MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(5000, () => console.log('Server running on port 5000')))
-  .catch(err => console.log(err));
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error(err));
+
+// Démarrage du serveur
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
